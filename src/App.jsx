@@ -1,3 +1,7 @@
+import Header from "./components/Header"
+import Formulario from "./components/Formulario"
+import ListadoPacientes from "./components/ListadoPacientes"
+
 function App() {
   // antes del return puedes declarar variables y poner código javascript
   return (
@@ -9,8 +13,10 @@ function App() {
     // en el nivel mas alto solo se puede retornar un elemento div o un fragment
     // ejemplo de fragment <> </>
 
-    <div className='App'>
-      <h1>Hola Mundo</h1>
+    <div>
+      <Header />
+      <Formulario />
+      <ListadoPacientes />
     </div>
   )
 }
