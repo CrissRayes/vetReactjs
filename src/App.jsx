@@ -13,7 +13,7 @@ function App() {
     // en el nivel mas alto solo se puede retornar un elemento div o un fragment
     // ejemplo de fragment <> </>
 
-    <div>
+    <div className='container mx-auto mt-20'>
       <Header />
       <Formulario />
       <ListadoPacientes />

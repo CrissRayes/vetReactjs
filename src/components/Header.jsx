@@ -1,10 +1,14 @@
 // create component
 const Header = () => {
-  // todos los componentes en jsx requieren un return
+  // no olvidar un unico return
   return (
-    <header>
-      <h1>Header</h1>
-    </header>
+    // fragment
+    <>
+      <h1 className='font-black text-5xl text-center md:w-1/2 mx-auto'>
+        Seguimiento Pacientes {""}
+        <span className='text-indigo-600'>Veterinaria</span>
+      </h1>
+    </>
   )
 }
 
