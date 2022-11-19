@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 
 // create component
-const Formulario = () => {
+const Formulario = ({ pacientes, setPacientes }) => {
   // extraer variables con destructuring de useState
   // asigna nombre a la variable y setNombre a la funcion que modifica el estado
   // El orden de declaración de states debe ser según se va requiriendo en el componente
@@ -22,6 +22,27 @@ const Formulario = () => {
     }
 
     setError(false) // para que desaparezca la alerta
+
+    // Constuye el objeto paciente con los datos del formulario
+    const objetoPaciente = {
+      nombre,
+      propietario,
+      email,
+      fecha,
+      sintomas,
+    }
+
+    // No usar push porque modifica el arreglo original
+    // para evitar eso se usa el spread operator
+    // se pasa el objetoPaciente al arreglo de pacientes
+    setPacientes([...pacientes, objetoPaciente])
+
+    // Reiniciar el formulario
+    setNombre("")
+    setPropietario("")
+    setEmail("")
+    setFecha("")
+    setSintomas("")
   }
 
   return (
