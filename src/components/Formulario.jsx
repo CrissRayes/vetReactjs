@@ -3,10 +3,17 @@ import { useState, useEffect } from "react"
 // create component
 const Formulario = () => {
   // extraer variables con destructuring de useState
+  // asigna nombre a la variable y setNombre a la funcion que modifica el estado
+  // El orden de declaración de states debe ser según se va requiriendo en el componente
   const [nombre, setNombre] = useState("")
+  const [propietario, setPropietario] = useState("")
+  const [email, setEmail] = useState("")
+  const [fecha, setFecha] = useState("")
+  const [sintomas, setSintomas] = useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault() // para que no se recargue la pagina
+    console.log("enviando formulario") // TODO: Eliminar el producción
   }
 
   return (
@@ -48,6 +55,8 @@ const Formulario = () => {
             type='text'
             placeholder='Nombre del Propietario'
             className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent'
+            value={propietario} // value del input
+            onChange={(e) => setPropietario(e.target.value)} // setea el valor del input
           />
         </div>
         <div className='mb-5'>
@@ -62,6 +71,8 @@ const Formulario = () => {
             type='email'
             placeholder='Email contacto'
             className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent'
+            value={email} // value del input
+            onChange={(e) => setEmail(e.target.value)} // setea el valor del input
           />
         </div>
         <div className='mb-5'>
@@ -75,6 +86,8 @@ const Formulario = () => {
             id='alta'
             type='date'
             className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent'
+            value={fecha} // value del input
+            onChange={(e) => setFecha(e.target.value)} // setea el valor del input
           />
         </div>
         <div className='mb-5'>
@@ -88,6 +101,8 @@ const Formulario = () => {
             id='sintomas'
             className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent'
             placeholder='Describe los sintomas'
+            value={sintomas} // value del input
+            onChange={(e) => setSintomas(e.target.value)} // setea el valor del input
           />
         </div>
         <input
