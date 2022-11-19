@@ -11,9 +11,17 @@ const Formulario = () => {
   const [fecha, setFecha] = useState("")
   const [sintomas, setSintomas] = useState("")
 
+  const [error, setError] = useState(false)
+
   const handleSubmit = (e) => {
     e.preventDefault() // para que no se recargue la pagina
-    console.log("enviando formulario") // TODO: Eliminar el producción
+    // validar formulario
+    if ([nombre, propietario, email, fecha, sintomas].includes("")) {
+      setError(true) // no se modifica el estado directamente, se usa la funcion
+      return
+    }
+
+    setError(false) // para que desaparezca la alerta
   }
 
   return (
@@ -27,6 +35,14 @@ const Formulario = () => {
         onSubmit={handleSubmit}
         className='bg-white shadow-md rounded-md py-10 px-5 mb-10'
       >
+        {/* si error es true, entonces se imprime el mensaje */}
+        {/* El parentesis luego del &&  es opcional */}
+        {error && (
+          <div className='bg-red-800 text-white text-center p-3 uppercase font-bold mb-3 rounded-md'>
+            <p>Todos los campos son obligatorios</p>
+          </div>
+        )}
+
         <div className='mb-5'>
           <label
             htmlFor='mascota'
