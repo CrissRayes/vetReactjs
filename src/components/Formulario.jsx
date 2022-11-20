@@ -18,7 +18,7 @@ const Formulario = ({ pacientes, setPacientes }) => {
     // validar formulario
     if ([nombre, propietario, email, fecha, sintomas].includes("")) {
       setError(true) // no se modifica el estado directamente, se usa la funcion
-      return
+      return // para que no se siga ejecutando el codigo
     }
 
     setError(false) // para que desaparezca la alerta
