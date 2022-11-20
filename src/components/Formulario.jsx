@@ -58,8 +58,15 @@ const Formulario = ({ pacientes, setPacientes }) => {
         className='bg-white shadow-md rounded-md py-10 px-5 mb-10'
       >
         {/* si error es true, entonces se imprime el mensaje */}
-        {/* se pasa un mensaje como props al componente Error */}
-        {error && <Error mensaje='Todos los campos son obligatorios' />}
+        {/* opcion 1: se pasa un mensaje como props al componente Error */}
+        {/* opcion 2: se usa children porque se puede usar el componente como un tag html y se le pueden pasar multiples campos */}
+        {error && (
+          // estamos usando children
+          <Error>
+            <p>Error:</p>
+            <p>Todos los campos son obligatorios</p>
+          </Error>
+        )}
 
         <div className='mb-5'>
           <label
