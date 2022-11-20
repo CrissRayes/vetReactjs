@@ -23,7 +23,7 @@ function App() {
         {/* Se pasan los pacientes para que luego desde el form se vayan agregando al arreglo inicial */}
         {/*  Se pasa la funcion setPacientes como props al componente Formulario */}
         <Formulario pacientes={pacientes} setPacientes={setPacientes} />
-        <ListadoPacientes />
+        <ListadoPacientes pacientes={pacientes} />
       </div>
     </div>
   )

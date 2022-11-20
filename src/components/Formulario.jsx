@@ -1,23 +1,29 @@
-import { useState, useEffect } from "react"
-import Error from "./Error"
+import { useState, useEffect } from 'react'
+import Error from './Error'
 
 // create component
 const Formulario = ({ pacientes, setPacientes }) => {
   // extraer variables con destructuring de useState
   // asigna nombre a la variable y setNombre a la funcion que modifica el estado
   // El orden de declaración de states debe ser según se va requiriendo en el componente
-  const [nombre, setNombre] = useState("")
-  const [propietario, setPropietario] = useState("")
-  const [email, setEmail] = useState("")
-  const [fecha, setFecha] = useState("")
-  const [sintomas, setSintomas] = useState("")
+  const [nombre, setNombre] = useState('')
+  const [propietario, setPropietario] = useState('')
+  const [email, setEmail] = useState('')
+  const [fecha, setFecha] = useState('')
+  const [sintomas, setSintomas] = useState('')
 
   const [error, setError] = useState(false)
 
-  const handleSubmit = (e) => {
+  const generarId = () => {
+    const random = Math.random().toString(36).substr(2)
+    const fecha = Date.now().toString(36)
+    return random + fecha
+  }
+
+  const handleSubmit = e => {
     e.preventDefault() // para que no se recargue la pagina
     // validar formulario
-    if ([nombre, propietario, email, fecha, sintomas].includes("")) {
+    if ([nombre, propietario, email, fecha, sintomas].includes('')) {
       setError(true) // no se modifica el estado directamente, se usa la funcion
       return // para que no se siga ejecutando el codigo
     }
@@ -31,6 +37,7 @@ const Formulario = ({ pacientes, setPacientes }) => {
       email,
       fecha,
       sintomas,
+      id: generarId(),
     }
 
     // No usar push porque modifica el arreglo original
@@ -39,18 +46,18 @@ const Formulario = ({ pacientes, setPacientes }) => {
     setPacientes([...pacientes, objetoPaciente])
 
     // Reiniciar el formulario
-    setNombre("")
-    setPropietario("")
-    setEmail("")
-    setFecha("")
-    setSintomas("")
+    setNombre('')
+    setPropietario('')
+    setEmail('')
+    setFecha('')
+    setSintomas('')
   }
 
   return (
     <div className='md:w-1/2 lg:w-2/5'>
       <h2 className='font-black text-3xl text-center'>Seguimiento Pacientes</h2>
       <p className='text-lg mt-5 text-center mb-10'>
-        Añade Pacientes y {""}
+        Añade Pacientes y {''}
         <span className='text-indigo-600 font-bold'>Administralos</span>
       </p>
       <form
@@ -81,7 +88,7 @@ const Formulario = ({ pacientes, setPacientes }) => {
             placeholder='Nombre de la Mascota'
             className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent'
             value={nombre} // value del input
-            onChange={(e) => setNombre(e.target.value)} // setea el valor del input
+            onChange={e => setNombre(e.target.value)} // setea el valor del input
           />
         </div>
         <div className='mb-5'>
@@ -97,7 +104,7 @@ const Formulario = ({ pacientes, setPacientes }) => {
             placeholder='Nombre del Propietario'
             className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent'
             value={propietario} // value del input
-            onChange={(e) => setPropietario(e.target.value)} // setea el valor del input
+            onChange={e => setPropietario(e.target.value)} // setea el valor del input
           />
         </div>
         <div className='mb-5'>
@@ -113,7 +120,7 @@ const Formulario = ({ pacientes, setPacientes }) => {
             placeholder='Email contacto'
             className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent'
             value={email} // value del input
-            onChange={(e) => setEmail(e.target.value)} // setea el valor del input
+            onChange={e => setEmail(e.target.value)} // setea el valor del input
           />
         </div>
         <div className='mb-5'>
@@ -128,7 +135,7 @@ const Formulario = ({ pacientes, setPacientes }) => {
             type='date'
             className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent'
             value={fecha} // value del input
-            onChange={(e) => setFecha(e.target.value)} // setea el valor del input
+            onChange={e => setFecha(e.target.value)} // setea el valor del input
           />
         </div>
         <div className='mb-5'>
@@ -143,7 +150,7 @@ const Formulario = ({ pacientes, setPacientes }) => {
             className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent'
             placeholder='Describe los sintomas'
             value={sintomas} // value del input
-            onChange={(e) => setSintomas(e.target.value)} // setea el valor del input
+            onChange={e => setSintomas(e.target.value)} // setea el valor del input
           />
         </div>
         <input
