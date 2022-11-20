@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import Error from "./Error"
 
 // create component
 const Formulario = ({ pacientes, setPacientes }) => {
@@ -57,12 +58,8 @@ const Formulario = ({ pacientes, setPacientes }) => {
         className='bg-white shadow-md rounded-md py-10 px-5 mb-10'
       >
         {/* si error es true, entonces se imprime el mensaje */}
-        {/* El parentesis luego del &&  es opcional */}
-        {error && (
-          <div className='bg-red-800 text-white text-center p-3 uppercase font-bold mb-3 rounded-md'>
-            <p>Todos los campos son obligatorios</p>
-          </div>
-        )}
+        {/* se pasa un mensaje como props al componente Error */}
+        {error && <Error mensaje='Todos los campos son obligatorios' />}
 
         <div className='mb-5'>
           <label
